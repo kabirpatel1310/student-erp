@@ -1,399 +1,189 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Marks Dashboard - EduManage ERP</title>
+<title>EduManage ERP - Fee Status</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-bright": "#f9f9ff",
-                        "on-secondary": "#ffffff",
-                        "tertiary-fixed-dim": "#c0c7d0",
-                        "tertiary-container": "#333a41",
-                        "surface-dim": "#d3daef",
-                        "tertiary": "#1d252b",
-                        "surface-container-high": "#e1e8fd",
-                        "surface-container-highest": "#dce2f7",
-                        "on-primary": "#ffffff",
-                        "on-secondary-container": "#fefcff",
-                        "inverse-surface": "#293040",
-                        "on-tertiary-fixed": "#151c23",
-                        "on-error-container": "#93000a",
-                        "surface-container": "#e9edff",
-                        "on-primary-fixed-variant": "#2d486d",
-                        "outline-variant": "#c4c6cf",
-                        "surface-container-lowest": "#ffffff",
-                        "background": "#f9f9ff",
-                        "surface-container-low": "#f1f3ff",
-                        "inverse-primary": "#adc8f5",
-                        "error": "#ba1a1a",
-                        "on-error": "#ffffff",
-                        "error-container": "#ffdad6",
-                        "outline": "#74777f",
-                        "on-tertiary": "#ffffff",
-                        "on-secondary-fixed": "#00174b",
-                        "surface": "#f9f9ff",
-                        "inverse-on-surface": "#edf0ff",
-                        "on-tertiary-fixed-variant": "#40484f",
-                        "on-primary-fixed": "#001c3b",
-                        "on-secondary-fixed-variant": "#003ea8",
-                        "surface-tint": "#455f87",
-                        "tertiary-fixed": "#dce3ec",
-                        "on-tertiary-container": "#9ca4ac",
-                        "secondary-fixed": "#dbe1ff",
-                        "on-surface-variant": "#43474e",
-                        "secondary-container": "#316bf3",
-                        "primary-container": "#1e3a5f",
-                        "primary-fixed": "#d5e3ff",
-                        "primary": "#022448",
-                        "surface-variant": "#dce2f7",
-                        "on-surface": "#141b2b",
-                        "on-primary-container": "#8aa4cf",
-                        "secondary-fixed-dim": "#b4c5ff",
-                        "primary-fixed-dim": "#adc8f5",
-                        "secondary": "#0051d5",
-                        "on-background": "#141b2b"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "lg": "24px",
-                        "gutter": "24px",
-                        "md": "16px",
-                        "container-max": "1280px",
-                        "base": "4px",
-                        "xs": "4px",
-                        "xl": "40px",
-                        "sm": "8px"
-                    },
-                    "fontFamily": {
-                        "title-sm": ["Inter"],
-                        "label-bold": ["Inter"],
-                        "body-md": ["Inter"],
-                        "display-lg": ["Inter"],
-                        "display-lg-mobile": ["Inter"],
-                        "headline-md": ["Inter"],
-                        "body-sm": ["Inter"]
-                    },
-                    "fontSize": {
-                        "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
-                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "display-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
-                    }
-                }
-            }
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-bright": "#f9f9ff",
+          "surface-container-low": "#f1f3ff",
+          "surface-container": "#e9edff",
+          "surface-container-lowest": "#ffffff",
+          "outline-variant": "#c4c6cf",
+          "outline": "#74777f",
+          "on-surface-variant": "#43474e",
+          "on-surface": "#141b2b",
+          "primary": "#022448",
+          "on-primary": "#ffffff",
+          "primary-container": "#1e3a5f",
+          "on-primary-container": "#8aa4cf",
+          "on-primary-fixed-variant": "#2d486d",
+          "secondary": "#0051d5",
+          "error": "#ba1a1a"
         }
-    </script>
+      }
+    }
+  }
+</script>
 <style>
-        body {
-            background-color: #FFFFFF;
-            font-family: 'Inter', sans-serif;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .zebra-stripe tr:nth-child(even) {
-            background-color: #EFF6FF;
-        }
-        .sidebar-transition {
-            transition: all 0.3s ease-in-out;
-        }
-        .active-nav {
-            background-color: #1e3a5f;
-            color: #8aa4cf;
-            font-weight: 700;
-            border-radius: 0.5rem;
-        }
-    </style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+  body { background-color: #f9f9ff; font-family: 'Inter', sans-serif; }
+  .zebra-row:nth-child(even) { background-color: #EFF6FF; }
+</style>
 </head>
-<body class="bg-white text-on-surface">
-<!-- SideNavBar Shell -->
-<aside class="flex flex-col h-screen fixed left-0 top-0 py-lg px-md docked left-0 h-full w-64 bg-primary dark:bg-primary sidebar-transition z-50">
-<div class="mb-xl px-sm">
-<div class="flex items-center gap-md">
-<div class="w-10 h-10 bg-on-primary rounded flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-headline-md">school</span>
-</div>
-<div>
-<h1 class="text-title-sm font-title-sm font-bold text-on-primary">EduManage ERP</h1>
-<p class="text-label-bold font-label-bold text-on-primary/70">Student Portal</p>
-</div>
-</div>
-</div>
-<nav class="flex-1 space-y-base overflow-y-auto">
-<a class="flex items-center gap-md px-md py-sm text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 transition-colors duration-150 rounded-lg" href="#">
-<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
-<span class="text-body-md font-body-md">Profile</span>
-</a>
-<a class="flex items-center gap-md px-md py-sm text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 transition-colors duration-150 rounded-lg" href="#">
-<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
-<span class="text-body-md font-body-md">Attendance</span>
-</a>
-<!-- Active State: Marks -->
-<a class="flex items-center gap-md px-md py-sm text-on-primary-container bg-primary-container rounded-lg font-bold" href="#">
-<span class="material-symbols-outlined" data-icon="grade">grade</span>
-<span class="text-body-md font-body-md">Marks</span>
-</a>
-<a class="flex items-center gap-md px-md py-sm text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 transition-colors duration-150 rounded-lg" href="#">
-<span class="material-symbols-outlined" data-icon="payments">payments</span>
-<span class="text-body-md font-body-md">Fee Status</span>
-</a>
-</nav>
-<div class="pt-lg border-t border-on-primary/10">
-<a class="flex items-center gap-md px-md py-sm text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 transition-colors duration-150 rounded-lg mb-sm" href="#">
-<span class="material-symbols-outlined" data-icon="settings">settings</span>
-<span class="text-body-md font-body-md">Settings</span>
-</a>
-<a class="flex items-center gap-md px-md py-sm text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 transition-colors duration-150 rounded-lg" href="#">
-<span class="material-symbols-outlined" data-icon="logout">logout</span>
-<span class="text-body-md font-body-md">Logout</span>
-</a>
-</div>
+<body class="text-on-surface">
+
+<aside class="flex flex-col h-screen fixed left-0 top-0 py-6 px-4 bg-primary w-64 z-50">
+  <div class="mb-10 px-2">
+    <h1 class="text-lg font-bold text-white">EduManage ERP</h1>
+    <p class="text-xs text-on-primary-container opacity-70 uppercase tracking-widest mt-1">Student Portal</p>
+  </div>
+  <nav class="flex-1 space-y-1">
+    <a class="flex items-center gap-4 px-4 py-2 text-on-primary-fixed-variant hover:text-white hover:bg-primary-container/20 rounded-lg transition-colors" href="../my_marks_student_portal/code.html">
+      <span class="material-symbols-outlined">grade</span><span>My Marks</span>
+    </a>
+    <a class="flex items-center gap-4 px-4 py-2 text-on-primary-container bg-primary-container rounded-lg font-bold" href="#">
+      <span class="material-symbols-outlined">payments</span><span>Fee Status</span>
+    </a>
+  </nav>
+  <div class="mt-auto border-t border-white/10 pt-4">
+    <div class="px-4 py-2">
+      <p class="text-sm font-bold text-white" id="student-name">Loading...</p>
+      <p class="text-xs text-on-primary-container opacity-70">Student</p>
+    </div>
+    <a class="flex items-center gap-4 px-4 py-2 text-on-primary-fixed-variant hover:text-white hover:bg-primary-container/20 rounded-lg transition-colors cursor-pointer" onclick="logout()">
+      <span class="material-symbols-outlined">logout</span><span>Logout</span>
+    </a>
+  </div>
 </aside>
-<!-- Main Canvas -->
-<main class="ml-64 min-h-screen flex flex-col">
-<!-- TopAppBar Shell -->
-<header class="flex justify-between items-center w-full px-lg h-16 sticky top-0 bg-surface-bright dark:bg-surface-container border-b border-outline-variant z-40">
-<div class="flex items-center gap-lg">
-<h2 class="text-headline-md font-headline-md font-bold text-primary">Academic Performance</h2>
-<div class="relative hidden lg:block">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-sm focus:ring-2 focus:ring-secondary/20 focus:outline-none w-64 transition-all" placeholder="Search records..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-md">
-<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-all text-on-surface-variant">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-</button>
-<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-all text-on-surface-variant">
-<span class="material-symbols-outlined" data-icon="help">help</span>
-</button>
-<div class="h-8 w-[1px] bg-outline-variant mx-sm"></div>
-<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-2 rounded-lg transition-all">
-<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="A clean, professional headshot of a college student in a navy blue sweater, smiling confidently. High-key academic lighting, minimalist bright grey background, corporate-modern aesthetic with sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4y4CW61BIvDK88_E1O67HX5fq7SW1GotMXCKvNSWLMzGQAFjGDbkmxKXA9Z7J4Aqw98_fu5IJGWRXcq9goioay_yhT2XVTeLV3NqDMcCzo1FXYOu5GHkEH4pnPW1W6q7kNbtYt5P9enjSB-rE7WuyloFSA5Zfl_8G7c7LRRwgMib0-JDeYy5mbN2kw5wvuRWvJO7l-u9Xz_-UauMcR3k9crsrD2a1jlVgAhSOblUvPgcDZ6wCNriGfWjLjl6rK8-LVq7ZTBc55Lw"/>
-</div>
-<div class="hidden md:block">
-<p class="text-label-bold font-label-bold text-primary leading-tight">Alex Johnson</p>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">CS - SEM 5</p>
-</div>
-</div>
-</div>
-</header>
-<!-- Page Content -->
-<div class="p-lg flex-1">
-<!-- Summary Bento Grid -->
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-lg">
-<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant">
-<div class="flex items-center justify-between mb-sm">
-<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">Current GPA</span>
-<span class="material-symbols-outlined text-secondary" data-icon="trending_up">trending_up</span>
-</div>
-<p class="text-display-lg font-display-lg text-primary">3.82</p>
-<p class="text-body-sm font-body-sm text-on-surface-variant mt-xs">Top 5% of Class</p>
-</div>
-<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant">
-<div class="flex items-center justify-between mb-sm">
-<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">Attendance</span>
-<span class="material-symbols-outlined text-secondary" data-icon="calendar_check">calendar_check</span>
-</div>
-<p class="text-display-lg font-display-lg text-primary">94%</p>
-<p class="text-body-sm font-body-sm text-on-surface-variant mt-xs">Excellent Standing</p>
-</div>
-<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant">
-<div class="flex items-center justify-between mb-sm">
-<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">Credits</span>
-<span class="material-symbols-outlined text-secondary" data-icon="book">book</span>
-</div>
-<p class="text-display-lg font-display-lg text-primary">124</p>
-<p class="text-body-sm font-body-sm text-on-surface-variant mt-xs">16 Pending Graduation</p>
-</div>
-<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant relative overflow-hidden">
 
-<div class="relative z-10">
-<div class="flex items-center justify-between mb-sm">
-<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">Status</span>
-<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
-</div>
-<p class="text-display-lg font-display-lg text-primary">Active</p>
-<p class="text-body-sm font-body-sm text-on-surface-variant mt-xs">No Pending Fees</p>
-</div>
-</div>
-</div>
-<!-- Table Section -->
-<section class="bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
-<div class="p-lg border-b border-outline-variant flex flex-col md:flex-row md:items-center justify-between gap-md">
-<div>
-<h3 class="text-title-sm font-title-sm text-primary">Semester V Grade Sheet</h3>
-<p class="text-body-sm font-body-sm text-on-surface-variant">Detailed breakdown of internal and external assessments.</p>
-</div>
-<div class="flex gap-sm">
-<button class="px-md py-sm bg-surface-container-high text-primary font-label-bold text-label-bold rounded hover:bg-surface-container-highest transition-colors flex items-center gap-sm">
-<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span> Export PDF
-                        </button>
-<button class="px-md py-sm bg-primary text-on-primary font-label-bold text-label-bold rounded hover:opacity-90 transition-opacity flex items-center gap-sm">
-<span class="material-symbols-outlined text-[18px]" data-icon="print">print</span> Print
-                        </button>
-</div>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left zebra-stripe">
-<thead class="bg-primary text-on-primary">
-<tr>
-<th class="px-lg py-md text-label-bold font-label-bold tracking-wider">SUBJECT</th>
-<th class="px-lg py-md text-label-bold font-label-bold tracking-wider">INTERNAL (20)</th>
-<th class="px-lg py-md text-label-bold font-label-bold tracking-wider">MIDSEM (30)</th>
-<th class="px-lg py-md text-label-bold font-label-bold tracking-wider">FINAL (50)</th>
-<th class="px-lg py-md text-label-bold font-label-bold tracking-wider">TOTAL (100)</th>
-<th class="px-lg py-md text-label-bold font-label-bold tracking-wider">STATUS</th>
-</tr>
-</thead>
-<tbody class="text-on-surface divide-y divide-outline-variant">
-<tr class="hover:bg-surface-container/5 transition-colors">
-<td class="px-lg py-md">
-<p class="font-bold text-primary">Data Structures</p>
-<p class="text-body-sm text-on-surface-variant">CS501 • Prof. S. Sharma</p>
-</td>
-<td class="px-lg py-md text-body-md font-body-md">18</td>
-<td class="px-lg py-md text-body-md font-body-md">25</td>
-<td class="px-lg py-md text-body-md font-body-md">42</td>
-<td class="px-lg py-md font-bold text-primary">85</td>
-<td class="px-lg py-md">
-<span class="inline-flex px-2 py-1 rounded bg-green-100 text-green-800 text-[10px] font-bold uppercase">Pass</span>
-</td>
-</tr>
-<tr class="hover:bg-surface-container/5 transition-colors">
-<td class="px-lg py-md">
-<p class="font-bold text-primary">Algorithms</p>
-<p class="text-body-sm text-on-surface-variant">CS502 • Prof. R. Varma</p>
-</td>
-<td class="px-lg py-md text-body-md font-body-md">15</td>
-<td class="px-lg py-md text-body-md font-body-md">20</td>
-<td class="px-lg py-md text-body-md font-body-md">38</td>
-<td class="px-lg py-md font-bold text-primary">73</td>
-<td class="px-lg py-md">
-<span class="inline-flex px-2 py-1 rounded bg-green-100 text-green-800 text-[10px] font-bold uppercase">Pass</span>
-</td>
-</tr>
-<tr class="hover:bg-surface-container/5 transition-colors">
-<td class="px-lg py-md">
-<p class="font-bold text-primary">Database Management Systems</p>
-<p class="text-body-sm text-on-surface-variant">CS503 • Prof. L. Gomez</p>
-</td>
-<td class="px-lg py-md text-body-md font-body-md">19</td>
-<td class="px-lg py-md text-body-md font-body-md">28</td>
-<td class="px-lg py-md text-body-md font-body-md">45</td>
-<td class="px-lg py-md font-bold text-primary">92</td>
-<td class="px-lg py-md">
-<span class="inline-flex px-2 py-1 rounded bg-green-100 text-green-800 text-[10px] font-bold uppercase">Pass</span>
-</td>
-</tr>
-<tr class="hover:bg-surface-container/5 transition-colors">
-<td class="px-lg py-md">
-<p class="font-bold text-primary">Operating Systems</p>
-<p class="text-body-sm text-on-surface-variant">CS504 • Prof. A. Singh</p>
-</td>
-<td class="px-lg py-md text-body-md font-body-md">12</td>
-<td class="px-lg py-md text-body-md font-body-md">14</td>
-<td class="px-lg py-md text-body-md font-body-md">22</td>
-<td class="px-lg py-md font-bold text-primary">48</td>
-<td class="px-lg py-md">
-<span class="inline-flex px-2 py-1 rounded bg-yellow-100 text-yellow-800 text-[10px] font-bold uppercase">Partial</span>
-</td>
-</tr>
-<tr class="hover:bg-surface-container/5 transition-colors">
-<td class="px-lg py-md">
-<p class="font-bold text-primary">Computer Networks</p>
-<p class="text-body-sm text-on-surface-variant">CS505 • Prof. M. Khan</p>
-</td>
-<td class="px-lg py-md text-body-md font-body-md">17</td>
-<td class="px-lg py-md text-body-md font-body-md">22</td>
-<td class="px-lg py-md text-body-md font-body-md">40</td>
-<td class="px-lg py-md font-bold text-primary">79</td>
-<td class="px-lg py-md">
-<span class="inline-flex px-2 py-1 rounded bg-green-100 text-green-800 text-[10px] font-bold uppercase">Pass</span>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Pagination/Footer -->
-<div class="px-lg py-md bg-surface-container-low flex justify-between items-center">
-<p class="text-body-sm font-body-sm text-on-surface-variant">Showing 5 of 5 core subjects</p>
-<div class="flex items-center gap-base">
-<button class="p-2 hover:bg-surface-container rounded-lg disabled:opacity-30" disabled="">
-<span class="material-symbols-outlined">chevron_left</span>
-</button>
-<button class="w-8 h-8 flex items-center justify-center bg-primary text-on-primary rounded font-label-bold text-label-bold">1</button>
-<button class="p-2 hover:bg-surface-container rounded-lg">
-<span class="material-symbols-outlined">chevron_right</span>
-</button>
-</div>
-</div>
-</section>
-<!-- Bottom Insight Section -->
-<div class="mt-lg grid grid-cols-1 md:grid-cols-2 gap-gutter">
-<div class="bg-surface-bright border border-outline-variant rounded-xl p-lg flex items-center gap-lg">
-<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center">
-<span class="material-symbols-outlined text-on-secondary text-headline-md" data-weight="fill">lightbulb</span>
-</div>
-<div>
-<h4 class="font-bold text-primary">Smart Suggestion</h4>
-<p class="text-body-sm text-on-surface-variant leading-relaxed">Based on your performance in Operating Systems, we suggest attending the "Kernel Architecture" workshop scheduled for next Friday at the Student Center.</p>
-</div>
-</div>
-<div class="bg-primary text-on-primary rounded-xl p-lg relative overflow-hidden group">
-<div class="relative z-10">
-<h4 class="font-bold text-white mb-xs">Download Semester Transcript</h4>
-<p class="text-body-sm text-on-primary/70 mb-md">Get your official digitally signed mark sheet for the current semester.</p>
-<button class="bg-secondary px-lg py-sm rounded-lg font-label-bold text-label-bold hover:bg-secondary-fixed transition-all">Download Now</button>
-</div>
-<div class="absolute right-[-20px] bottom-[-20px] opacity-10 group-hover:scale-110 transition-transform duration-500">
-<span class="material-symbols-outlined text-[120px]">description</span>
-</div>
-</div>
-</div>
-</div>
-<footer class="mt-auto px-lg py-md border-t border-outline-variant bg-surface-bright text-center">
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">© 2024 EduManage ERP Institutional Systems • All Rights Reserved</p>
-</footer>
+<main class="ml-64 min-h-screen">
+  <header class="flex justify-between items-center w-full px-6 h-16 sticky top-0 bg-surface-bright border-b border-outline-variant z-40">
+    <h2 class="text-xl font-bold text-primary">My Fee Status</h2>
+  </header>
+
+  <div class="p-6 max-w-[1280px]">
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <div class="bg-[#EFF6FF] border border-[#D1E4FF] p-6 rounded-xl">
+        <p class="text-xs font-semibold text-on-surface-variant uppercase">Total Amount</p>
+        <h3 class="text-3xl font-bold text-primary mt-1" id="total-amount">--</h3>
+      </div>
+      <div class="bg-[#EFF6FF] border border-[#D1E4FF] p-6 rounded-xl">
+        <p class="text-xs font-semibold text-on-surface-variant uppercase">Pending</p>
+        <h3 class="text-3xl font-bold text-error mt-1" id="pending-amount">--</h3>
+      </div>
+      <div class="bg-[#EFF6FF] border border-[#D1E4FF] p-6 rounded-xl">
+        <p class="text-xs font-semibold text-on-surface-variant uppercase">Paid</p>
+        <h3 class="text-3xl font-bold text-green-700 mt-1" id="paid-count">--</h3>
+      </div>
+    </div>
+
+    <!-- Fee Table -->
+    <div class="bg-white rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+      <div class="p-4 border-b border-outline-variant bg-surface-container-low">
+        <h4 class="font-bold text-primary">My Fee Records</h4>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Fee Type</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Amount</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Due Date</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Semester</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Status</th>
+            </tr>
+          </thead>
+          <tbody id="fees-table">
+            <tr><td colspan="5" class="px-6 py-8 text-center text-on-surface-variant">Loading fees...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </main>
-<script>
-        // Micro-interaction for table rows
-        document.querySelectorAll('tbody tr').forEach(row => {
-            row.addEventListener('mouseenter', () => {
-                row.style.transform = 'translateX(4px)';
-                row.style.transition = 'transform 0.2s ease-out';
-            });
-            row.addEventListener('mouseleave', () => {
-                row.style.transform = 'translateX(0)';
-            });
-        });
 
-        // Search bar focus effect
-        const searchInput = document.querySelector('input[type="text"]');
-        searchInput.addEventListener('focus', () => {
-            searchInput.parentElement.classList.add('scale-105');
-            searchInput.parentElement.style.transition = 'transform 0.2s ease-out';
-        });
-        searchInput.addEventListener('blur', () => {
-            searchInput.parentElement.classList.remove('scale-105');
-        });
-    </script>
-</body></html>
+<script>
+  const API_URL = 'https://student-erp-backend-v7f3.onrender.com';
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  if (!token) window.location.href = '../login_edumanage_erp/code.html';
+
+  document.getElementById('student-name').textContent = user.full_name || 'Student';
+
+  const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
+
+  async function loadFees() {
+    try {
+      // Get student record
+      const studentsRes = await fetch(`${API_URL}/api/students`, { headers });
+      const students = await studentsRes.json();
+      const myStudent = students.find(s => s.user_id === user.id);
+
+      if (!myStudent) {
+        document.getElementById('fees-table').innerHTML =
+          '<tr><td colspan="5" class="px-6 py-8 text-center text-on-surface-variant">No student record found</td></tr>';
+        return;
+      }
+
+      const res = await fetch(`${API_URL}/api/fees/student/${myStudent.id}`, { headers });
+      const fees = await res.json();
+
+      const totalAmount = fees.reduce((sum, f) => sum + parseFloat(f.amount), 0);
+      const pendingFees = fees.filter(f => f.status !== 'paid');
+      const pendingAmount = pendingFees.reduce((sum, f) => sum + parseFloat(f.amount), 0);
+      const paidCount = fees.filter(f => f.status === 'paid').length;
+
+      document.getElementById('total-amount').textContent = `₹${totalAmount}`;
+      document.getElementById('pending-amount').textContent = `₹${pendingAmount}`;
+      document.getElementById('paid-count').textContent = `${paidCount} paid`;
+
+      const tbody = document.getElementById('fees-table');
+      if (!fees.length) {
+        tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-on-surface-variant">No fee records found</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = fees.map(f => `
+        <tr class="zebra-row border-b border-outline-variant/30">
+          <td class="px-6 py-3 font-bold">${f.fee_type}</td>
+          <td class="px-6 py-3 font-bold text-primary">₹${f.amount}</td>
+          <td class="px-6 py-3 text-on-surface-variant">${f.due_date}</td>
+          <td class="px-6 py-3">Sem ${f.semester}</td>
+          <td class="px-6 py-3">
+            <span class="px-2 py-1 rounded-full text-xs font-bold ${
+              f.status === 'paid' ? 'bg-green-100 text-green-800' :
+              f.status === 'partial' ? 'bg-yellow-100 text-yellow-800' :
+              'bg-red-100 text-red-800'
+            }">${f.status}</span>
+          </td>
+        </tr>
+      `).join('');
+
+    } catch (err) {
+      document.getElementById('fees-table').innerHTML =
+        '<tr><td colspan="5" class="px-6 py-8 text-center text-error">Failed to load fees</td></tr>';
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.href = '../login_edumanage_erp/code.html';
+  }
+
+  loadFees();
+</script>
+</body>
+</html>
