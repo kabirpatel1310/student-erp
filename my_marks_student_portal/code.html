@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>EduManage ERP - Fee Status</title>
+<title>EduManage ERP - My Marks</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -47,10 +47,10 @@
     <p class="text-xs text-on-primary-container opacity-70 uppercase tracking-widest mt-1">Student Portal</p>
   </div>
   <nav class="flex-1 space-y-1">
-    <a class="flex items-center gap-4 px-4 py-2 text-on-primary-fixed-variant hover:text-white hover:bg-primary-container/20 rounded-lg transition-colors" href="../my_marks_student_portal/code.html">
+    <a class="flex items-center gap-4 px-4 py-2 text-on-primary-container bg-primary-container rounded-lg font-bold" href="#">
       <span class="material-symbols-outlined">grade</span><span>My Marks</span>
     </a>
-    <a class="flex items-center gap-4 px-4 py-2 text-on-primary-container bg-primary-container rounded-lg font-bold" href="#">
+    <a class="flex items-center gap-4 px-4 py-2 text-on-primary-fixed-variant hover:text-white hover:bg-primary-container/20 rounded-lg transition-colors" href="../fee_status_student_portal/code.html">
       <span class="material-symbols-outlined">payments</span><span>Fee Status</span>
     </a>
   </nav>
@@ -67,45 +67,46 @@
 
 <main class="ml-64 min-h-screen">
   <header class="flex justify-between items-center w-full px-6 h-16 sticky top-0 bg-surface-bright border-b border-outline-variant z-40">
-    <h2 class="text-xl font-bold text-primary">My Fee Status</h2>
+    <h2 class="text-xl font-bold text-primary">My Academic Performance</h2>
   </header>
 
   <div class="p-6 max-w-[1280px]">
 
-    <!-- Summary Cards -->
+    <!-- Stats -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
       <div class="bg-[#EFF6FF] border border-[#D1E4FF] p-6 rounded-xl">
-        <p class="text-xs font-semibold text-on-surface-variant uppercase">Total Amount</p>
-        <h3 class="text-3xl font-bold text-primary mt-1" id="total-amount">--</h3>
+        <p class="text-xs font-semibold text-on-surface-variant uppercase">Total Exams</p>
+        <h3 class="text-3xl font-bold text-primary mt-1" id="total-exams">--</h3>
       </div>
       <div class="bg-[#EFF6FF] border border-[#D1E4FF] p-6 rounded-xl">
-        <p class="text-xs font-semibold text-on-surface-variant uppercase">Pending</p>
-        <h3 class="text-3xl font-bold text-error mt-1" id="pending-amount">--</h3>
+        <p class="text-xs font-semibold text-on-surface-variant uppercase">Highest Score</p>
+        <h3 class="text-3xl font-bold text-green-700 mt-1" id="highest-score">--</h3>
       </div>
       <div class="bg-[#EFF6FF] border border-[#D1E4FF] p-6 rounded-xl">
-        <p class="text-xs font-semibold text-on-surface-variant uppercase">Paid</p>
-        <h3 class="text-3xl font-bold text-green-700 mt-1" id="paid-count">--</h3>
+        <p class="text-xs font-semibold text-on-surface-variant uppercase">Average Score</p>
+        <h3 class="text-3xl font-bold text-secondary mt-1" id="avg-score">--</h3>
       </div>
     </div>
 
-    <!-- Fee Table -->
+    <!-- Marks Table -->
     <div class="bg-white rounded-xl border border-outline-variant overflow-hidden shadow-sm">
       <div class="p-4 border-b border-outline-variant bg-surface-container-low">
-        <h4 class="font-bold text-primary">My Fee Records</h4>
+        <h4 class="font-bold text-primary">My Marks</h4>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left">
           <thead class="bg-primary text-white">
             <tr>
-              <th class="px-6 py-3 text-xs font-semibold uppercase">Fee Type</th>
-              <th class="px-6 py-3 text-xs font-semibold uppercase">Amount</th>
-              <th class="px-6 py-3 text-xs font-semibold uppercase">Due Date</th>
-              <th class="px-6 py-3 text-xs font-semibold uppercase">Semester</th>
-              <th class="px-6 py-3 text-xs font-semibold uppercase">Status</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Exam</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Subject</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Date</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Total</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Obtained</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Result</th>
             </tr>
           </thead>
-          <tbody id="fees-table">
-            <tr><td colspan="5" class="px-6 py-8 text-center text-on-surface-variant">Loading fees...</td></tr>
+          <tbody id="marks-table">
+            <tr><td colspan="6" class="px-6 py-8 text-center text-on-surface-variant">Loading marks...</td></tr>
           </tbody>
         </table>
       </div>
@@ -124,56 +125,61 @@
 
   const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
 
-  async function loadFees() {
+  async function loadMarks() {
     try {
-      // Get student record
+      // First get student record
       const studentsRes = await fetch(`${API_URL}/api/students`, { headers });
       const students = await studentsRes.json();
       const myStudent = students.find(s => s.user_id === user.id);
 
       if (!myStudent) {
-        document.getElementById('fees-table').innerHTML =
-          '<tr><td colspan="5" class="px-6 py-8 text-center text-on-surface-variant">No student record found</td></tr>';
+        document.getElementById('marks-table').innerHTML =
+          '<tr><td colspan="6" class="px-6 py-8 text-center text-on-surface-variant">No student record found for your account</td></tr>';
         return;
       }
 
-      const res = await fetch(`${API_URL}/api/fees/student/${myStudent.id}`, { headers });
-      const fees = await res.json();
+      const res = await fetch(`${API_URL}/api/marks/student/${myStudent.id}`, { headers });
+      const marks = await res.json();
 
-      const totalAmount = fees.reduce((sum, f) => sum + parseFloat(f.amount), 0);
-      const pendingFees = fees.filter(f => f.status !== 'paid');
-      const pendingAmount = pendingFees.reduce((sum, f) => sum + parseFloat(f.amount), 0);
-      const paidCount = fees.filter(f => f.status === 'paid').length;
+      document.getElementById('total-exams').textContent = marks.length;
 
-      document.getElementById('total-amount').textContent = `₹${totalAmount}`;
-      document.getElementById('pending-amount').textContent = `₹${pendingAmount}`;
-      document.getElementById('paid-count').textContent = `${paidCount} paid`;
+      if (marks.length > 0) {
+        const scores = marks.map(m => m.marks_obtained);
+        document.getElementById('highest-score').textContent = Math.max(...scores);
+        document.getElementById('avg-score').textContent = (scores.reduce((a,b) => a+b, 0) / scores.length).toFixed(1);
+      } else {
+        document.getElementById('highest-score').textContent = '0';
+        document.getElementById('avg-score').textContent = '0';
+      }
 
-      const tbody = document.getElementById('fees-table');
-      if (!fees.length) {
-        tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-on-surface-variant">No fee records found</td></tr>';
+      const tbody = document.getElementById('marks-table');
+      if (!marks.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="px-6 py-8 text-center text-on-surface-variant">No marks records yet</td></tr>';
         return;
       }
 
-      tbody.innerHTML = fees.map(f => `
-        <tr class="zebra-row border-b border-outline-variant/30">
-          <td class="px-6 py-3 font-bold">${f.fee_type}</td>
-          <td class="px-6 py-3 font-bold text-primary">₹${f.amount}</td>
-          <td class="px-6 py-3 text-on-surface-variant">${f.due_date}</td>
-          <td class="px-6 py-3">Sem ${f.semester}</td>
-          <td class="px-6 py-3">
-            <span class="px-2 py-1 rounded-full text-xs font-bold ${
-              f.status === 'paid' ? 'bg-green-100 text-green-800' :
-              f.status === 'partial' ? 'bg-yellow-100 text-yellow-800' :
-              'bg-red-100 text-red-800'
-            }">${f.status}</span>
-          </td>
-        </tr>
-      `).join('');
+      tbody.innerHTML = marks.map(m => {
+        const percentage = ((m.marks_obtained / m.exams?.total_marks) * 100).toFixed(1);
+        const passed = m.marks_obtained >= (m.exams?.total_marks * 0.4);
+        return `
+          <tr class="zebra-row border-b border-outline-variant/30">
+            <td class="px-6 py-3 font-bold">${m.exams?.name || 'N/A'}</td>
+            <td class="px-6 py-3">${m.exams?.subjects?.name || 'N/A'}</td>
+            <td class="px-6 py-3 text-on-surface-variant">${m.exams?.exam_date || 'N/A'}</td>
+            <td class="px-6 py-3">${m.exams?.total_marks || 'N/A'}</td>
+            <td class="px-6 py-3 font-bold text-primary">${m.marks_obtained} <span class="text-xs text-on-surface-variant">(${percentage}%)</span></td>
+            <td class="px-6 py-3">
+              <span class="px-2 py-1 rounded-full text-xs font-bold ${passed ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                ${passed ? 'Pass' : 'Fail'}
+              </span>
+            </td>
+          </tr>
+        `;
+      }).join('');
 
     } catch (err) {
-      document.getElementById('fees-table').innerHTML =
-        '<tr><td colspan="5" class="px-6 py-8 text-center text-error">Failed to load fees</td></tr>';
+      document.getElementById('marks-table').innerHTML =
+        '<tr><td colspan="6" class="px-6 py-8 text-center text-error">Failed to load marks</td></tr>';
     }
   }
 
@@ -183,7 +189,7 @@
     window.location.href = '../login_edumanage_erp/code.html';
   }
 
-  loadFees();
+  loadMarks();
 </script>
 </body>
 </html>
