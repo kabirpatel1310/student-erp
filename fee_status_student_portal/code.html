@@ -1,353 +1,189 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>EduManage ERP - Student Fee Status</title>
+<title>EduManage ERP - Fee Status</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface-bright": "#f9f9ff",
-                    "on-secondary": "#ffffff",
-                    "tertiary-fixed-dim": "#c0c7d0",
-                    "tertiary-container": "#333a41",
-                    "surface-dim": "#d3daef",
-                    "tertiary": "#1d252b",
-                    "surface-container-high": "#e1e8fd",
-                    "surface-container-highest": "#dce2f7",
-                    "on-primary": "#ffffff",
-                    "on-secondary-container": "#fefcff",
-                    "inverse-surface": "#293040",
-                    "on-tertiary-fixed": "#151c23",
-                    "on-error-container": "#93000a",
-                    "surface-container": "#e9edff",
-                    "on-primary-fixed-variant": "#2d486d",
-                    "outline-variant": "#c4c6cf",
-                    "surface-container-lowest": "#ffffff",
-                    "background": "#f9f9ff",
-                    "surface-container-low": "#f1f3ff",
-                    "inverse-primary": "#adc8f5",
-                    "error": "#ba1a1a",
-                    "on-error": "#ffffff",
-                    "error-container": "#ffdad6",
-                    "outline": "#74777f",
-                    "on-tertiary": "#ffffff",
-                    "on-secondary-fixed": "#00174b",
-                    "surface": "#f9f9ff",
-                    "inverse-on-surface": "#edf0ff",
-                    "on-tertiary-fixed-variant": "#40484f",
-                    "on-primary-fixed": "#001c3b",
-                    "on-secondary-fixed-variant": "#003ea8",
-                    "surface-tint": "#455f87",
-                    "tertiary-fixed": "#dce3ec",
-                    "on-tertiary-container": "#9ca4ac",
-                    "secondary-fixed": "#dbe1ff",
-                    "on-surface-variant": "#43474e",
-                    "secondary-container": "#316bf3",
-                    "primary-container": "#1e3a5f",
-                    "primary-fixed": "#d5e3ff",
-                    "primary": "#022448",
-                    "surface-variant": "#dce2f7",
-                    "on-surface": "#141b2b",
-                    "on-primary-container": "#8aa4cf",
-                    "secondary-fixed-dim": "#b4c5ff",
-                    "primary-fixed-dim": "#adc8f5",
-                    "secondary": "#0051d5",
-                    "on-background": "#141b2b"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "lg": "24px",
-                    "gutter": "24px",
-                    "md": "16px",
-                    "container-max": "1280px",
-                    "base": "4px",
-                    "xs": "4px",
-                    "xl": "40px",
-                    "sm": "8px"
-            },
-            "fontFamily": {
-                    "title-sm": ["Inter"],
-                    "label-bold": ["Inter"],
-                    "body-md": ["Inter"],
-                    "display-lg": ["Inter"],
-                    "headline-md": ["Inter"],
-                    "body-sm": ["Inter"]
-            }
-          }
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-bright": "#f9f9ff",
+          "surface-container-low": "#f1f3ff",
+          "surface-container": "#e9edff",
+          "surface-container-lowest": "#ffffff",
+          "outline-variant": "#c4c6cf",
+          "outline": "#74777f",
+          "on-surface-variant": "#43474e",
+          "on-surface": "#141b2b",
+          "primary": "#022448",
+          "on-primary": "#ffffff",
+          "primary-container": "#1e3a5f",
+          "on-primary-container": "#8aa4cf",
+          "on-primary-fixed-variant": "#2d486d",
+          "secondary": "#0051d5",
+          "error": "#ba1a1a"
         }
       }
-    </script>
+    }
+  }
+</script>
 <style>
-        body { font-family: 'Inter', sans-serif; }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(30, 58, 95, 0.1);
-            border-radius: 10px;
-        }
-    </style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+  body { background-color: #f9f9ff; font-family: 'Inter', sans-serif; }
+  .zebra-row:nth-child(even) { background-color: #EFF6FF; }
+</style>
 </head>
-<body class="bg-surface-bright text-on-surface">
-<!-- Sidebar Navigation -->
-<aside class="flex flex-col h-screen fixed left-0 top-0 py-lg px-md bg-primary dark:bg-primary docked left-0 h-full w-64">
-<div class="mb-xl px-sm">
-<h1 class="text-title-sm font-title-sm font-bold text-on-primary">EduManage ERP</h1>
-<p class="text-label-bold font-label-bold opacity-70 text-on-primary uppercase tracking-wider mt-xs">Admin Portal</p>
-</div>
-<nav class="flex-1 space-y-base overflow-y-auto custom-scrollbar">
-<!-- Navigation Items Mapping -->
-<a class="flex items-center gap-md p-md text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 text-body-md font-body-md transition-colors rounded-lg group" href="#">
-<span class="material-symbols-outlined">dashboard</span>
-<span>Dashboard</span>
-</a>
-<a class="flex items-center gap-md p-md text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 text-body-md font-body-md transition-colors rounded-lg group" href="#">
-<span class="material-symbols-outlined">school</span>
-<span>Students</span>
-</a>
-<a class="flex items-center gap-md p-md text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 text-body-md font-body-md transition-colors rounded-lg group" href="#">
-<span class="material-symbols-outlined">badge</span>
-<span>Faculty</span>
-</a>
-<!-- Active State for Fee Status -->
-<a class="flex items-center gap-md p-md text-on-primary-container bg-primary-container rounded-lg font-bold text-body-md font-body-md" href="#">
-<span class="material-symbols-outlined">payments</span>
-<span>Fees</span>
-</a>
-<a class="flex items-center gap-md p-md text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 text-body-md font-body-md transition-colors rounded-lg group" href="#">
-<span class="material-symbols-outlined">calendar_today</span>
-<span>Attendance</span>
-</a>
-<a class="flex items-center gap-md p-md text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 text-body-md font-body-md transition-colors rounded-lg group" href="#">
-<span class="material-symbols-outlined">grade</span>
-<span>Marks</span>
-</a>
-<a class="flex items-center gap-md p-md text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 text-body-md font-body-md transition-colors rounded-lg group" href="#">
-<span class="material-symbols-outlined">assessment</span>
-<span>Reports</span>
-</a>
-<a class="flex items-center gap-md p-md text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 text-body-md font-body-md transition-colors rounded-lg group" href="#">
-<span class="material-symbols-outlined">settings</span>
-<span>Settings</span>
-</a>
-</nav>
-<div class="mt-auto pt-lg border-t border-on-primary/10 space-y-base">
-<a class="flex items-center gap-md p-md text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 text-body-md font-body-md transition-colors rounded-lg group" href="#">
-<span class="material-symbols-outlined">account_circle</span>
-<span>Profile</span>
-</a>
-<a class="flex items-center gap-md p-md text-on-primary-fixed-variant hover:text-on-primary hover:bg-primary-container/20 text-body-md font-body-md transition-colors rounded-lg group" href="#">
-<span class="material-symbols-outlined">logout</span>
-<span>Logout</span>
-</a>
-</div>
+<body class="text-on-surface">
+
+<aside class="flex flex-col h-screen fixed left-0 top-0 py-6 px-4 bg-primary w-64 z-50">
+  <div class="mb-10 px-2">
+    <h1 class="text-lg font-bold text-white">EduManage ERP</h1>
+    <p class="text-xs text-on-primary-container opacity-70 uppercase tracking-widest mt-1">Student Portal</p>
+  </div>
+  <nav class="flex-1 space-y-1">
+    <a class="flex items-center gap-4 px-4 py-2 text-on-primary-fixed-variant hover:text-white hover:bg-primary-container/20 rounded-lg transition-colors" href="../my_marks_student_portal/code.html">
+      <span class="material-symbols-outlined">grade</span><span>My Marks</span>
+    </a>
+    <a class="flex items-center gap-4 px-4 py-2 text-on-primary-container bg-primary-container rounded-lg font-bold" href="#">
+      <span class="material-symbols-outlined">payments</span><span>Fee Status</span>
+    </a>
+  </nav>
+  <div class="mt-auto border-t border-white/10 pt-4">
+    <div class="px-4 py-2">
+      <p class="text-sm font-bold text-white" id="student-name">Loading...</p>
+      <p class="text-xs text-on-primary-container opacity-70">Student</p>
+    </div>
+    <a class="flex items-center gap-4 px-4 py-2 text-on-primary-fixed-variant hover:text-white hover:bg-primary-container/20 rounded-lg transition-colors cursor-pointer" onclick="logout()">
+      <span class="material-symbols-outlined">logout</span><span>Logout</span>
+    </a>
+  </div>
 </aside>
-<!-- Header Navigation -->
-<header class="flex justify-between items-center w-full px-lg h-16 ml-64 max-w-[calc(100%-256px)] bg-surface-bright dark:bg-surface-container border-b border-outline-variant sticky top-0 z-10">
-<div class="flex items-center gap-md">
-<div class="relative w-64">
-<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="w-full pl-xl pr-md py-xs bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none text-body-sm" placeholder="Search records..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-lg">
-<div class="flex items-center gap-md text-on-surface-variant">
-<button class="material-symbols-outlined hover:bg-surface-container-low p-xs rounded-full transition-all">notifications</button>
-<button class="material-symbols-outlined hover:bg-surface-container-low p-xs rounded-full transition-all">help</button>
-<button class="material-symbols-outlined hover:bg-surface-container-low p-xs rounded-full transition-all">settings</button>
-</div>
-<div class="flex items-center gap-md pl-lg border-l border-outline-variant">
-<div class="text-right">
-<p class="text-label-bold font-label-bold text-on-surface">Alex Johnson</p>
-<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Student ID: #2024-0891</p>
-</div>
-<img class="w-10 h-10 rounded-full object-cover ring-2 ring-outline-variant" data-alt="A professional portrait of a university student in a smart-casual blazer against a clean institutional background. The lighting is soft and even, characteristic of a high-end educational portal. The aesthetic is clean, corporate, and minimalist with high contrast and sharp focus on the subjects friendly expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbSFodq6hIPwo0ajNp_d4_q5zBjLJP2j83zcfHiEjbkCQTMqCXwIEHAm9G54omZJ5w6Vw_tMB-PqT00JNWcTjwNRRwTjpkmjDGfeBEva5jBpmTjN5ahnGkHLfPi4FgArKM-0Y8goEoWMLdUyumFsl0xJUU2cIpk1GRAac5OT2t6CmExIH3eIHhDU_biun0337_rXX7cSCN6zlMcbrzXiTESSR475Zwpyh9tPFHZAfzQt-2nCpWqKh4I01UmpMSRH6mDeJMw7h1K2E"/>
-</div>
-</div>
-</header>
-<!-- Main Content Area -->
-<main class="ml-64 p-xl max-w-container-max mx-auto min-h-screen">
-<!-- Page Header -->
-<div class="mb-lg">
-<h2 class="text-headline-md font-headline-md text-primary mb-xs">Fee Management System</h2>
-<p class="text-body-md font-body-md text-on-surface-variant">View and manage your academic financial obligations.</p>
-</div>
-<!-- Bento Grid for Fee Status -->
-<div class="grid grid-cols-12 gap-gutter">
-<!-- Main Fee Summary Card -->
-<div class="col-span-12 lg:col-span-8 p-lg bg-[#EFF6FF] border border-[#D1E4FF] rounded-xl flex flex-col gap-lg">
-<div class="flex justify-between items-start border-b border-[#D1E4FF] pb-md">
-<div>
-<h3 class="text-headline-md font-headline-md text-[#1E3A5F]">Current Academic Year</h3>
-<p class="text-body-sm font-body-sm text-[#1E3A5F]/70">2023 - 2024 Semester II</p>
-</div>
-<span class="px-md py-xs bg-yellow-100 text-yellow-800 text-label-bold font-label-bold rounded-full border border-yellow-200">
-                        Partial
-                    </span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
-<div class="bg-white p-lg rounded-lg border border-[#D1E4FF]">
-<p class="text-label-bold font-label-bold text-on-surface-variant uppercase mb-xs">Total Amount</p>
-<p class="text-display-lg font-display-lg text-primary">$4,500</p>
-<div class="h-1 w-full bg-surface-container-low rounded-full mt-md overflow-hidden">
-<div class="h-full bg-primary w-full"></div>
-</div>
-</div>
-<div class="bg-white p-lg rounded-lg border border-[#D1E4FF]">
-<p class="text-label-bold font-label-bold text-on-surface-variant uppercase mb-xs">Amount Paid</p>
-<p class="text-display-lg font-display-lg text-secondary">$3,000</p>
-<div class="h-1 w-full bg-surface-container-low rounded-full mt-md overflow-hidden">
-<div class="h-full bg-secondary w-[66%]"></div>
-</div>
-</div>
-<div class="bg-white p-lg rounded-lg border border-[#D1E4FF]">
-<p class="text-label-bold font-label-bold text-on-surface-variant uppercase mb-xs">Balance</p>
-<p class="text-display-lg font-display-lg text-error">$1,500</p>
-<div class="h-1 w-full bg-surface-container-low rounded-full mt-md overflow-hidden">
-<div class="h-full bg-error w-[34%]"></div>
-</div>
-</div>
-</div>
-<div class="flex justify-end pt-md">
-<button class="bg-primary text-on-primary px-lg py-md rounded-lg font-label-bold hover:opacity-90 transition-opacity flex items-center gap-sm">
-<span class="material-symbols-outlined text-[20px]">credit_card</span>
-                        Pay Remaining Balance
-                    </button>
-</div>
-</div>
-<!-- Side Card: Quick Stats -->
-<div class="col-span-12 lg:col-span-4 space-y-gutter">
-<div class="p-lg bg-surface-container-low border border-outline-variant rounded-xl">
-<h4 class="text-title-sm font-title-sm text-primary mb-md">Payment Deadlines</h4>
-<ul class="space-y-md">
-<li class="flex items-center gap-md">
-<div class="w-2 h-2 rounded-full bg-error"></div>
-<div>
-<p class="text-label-bold font-label-bold">Library Fine</p>
-<p class="text-body-sm font-body-sm text-on-surface-variant">Due: Oct 15, 2023</p>
-</div>
-<span class="ml-auto text-label-bold text-error">$25.00</span>
-</li>
-<li class="flex items-center gap-md">
-<div class="w-2 h-2 rounded-full bg-secondary"></div>
-<div>
-<p class="text-label-bold font-label-bold">Lab Fees</p>
-<p class="text-body-sm font-body-sm text-on-surface-variant">Due: Nov 01, 2023</p>
-</div>
-<span class="ml-auto text-label-bold text-on-surface">$150.00</span>
-</li>
-</ul>
-</div>
-<div class="p-lg bg-primary text-on-primary rounded-xl overflow-hidden relative group">
-<div class="relative z-10">
-<h4 class="text-title-sm font-title-sm mb-xs">Scholarship Applied</h4>
-<p class="text-display-lg font-display-lg mb-md">-$500</p>
-<p class="text-body-sm font-body-sm opacity-80">Academic Merit Scholarship 2023 applied successfully to total balance.</p>
-</div>
-<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] opacity-10 rotate-12 group-hover:scale-110 transition-transform duration-700" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-</div>
-</div>
-<!-- Transaction History Table -->
-<div class="col-span-12">
-<div class="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
-<div class="p-lg border-b border-outline-variant flex justify-between items-center">
-<h3 class="text-title-sm font-title-sm text-primary">Transaction History</h3>
-<button class="text-secondary text-label-bold flex items-center gap-xs hover:underline">
-<span class="material-symbols-outlined text-[18px]">download</span>
-                            Download Full Statement
-                        </button>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-primary text-on-primary">
-<th class="p-md text-label-bold font-label-bold uppercase">Transaction ID</th>
-<th class="p-md text-label-bold font-label-bold uppercase">Date</th>
-<th class="p-md text-label-bold font-label-bold uppercase">Description</th>
-<th class="p-md text-label-bold font-label-bold uppercase">Method</th>
-<th class="p-md text-label-bold font-label-bold uppercase">Amount</th>
-<th class="p-md text-label-bold font-label-bold uppercase">Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="border-b border-outline-variant hover:bg-[#EFF6FF] transition-colors">
-<td class="p-md text-body-sm font-medium">TXN-90214</td>
-<td class="p-md text-body-sm">Sep 12, 2023</td>
-<td class="p-md text-body-sm">Tuition Installment #1</td>
-<td class="p-md text-body-sm">Visa Card (**** 4421)</td>
-<td class="p-md text-body-sm font-bold text-on-surface">$1,500.00</td>
-<td class="p-md">
-<span class="px-sm py-1 bg-green-100 text-green-800 text-label-bold rounded-full border border-green-200">Paid</span>
-</td>
-</tr>
-<tr class="border-b border-outline-variant bg-[#EFF6FF]/30 hover:bg-[#EFF6FF] transition-colors">
-<td class="p-md text-body-sm font-medium">TXN-88122</td>
-<td class="p-md text-body-sm">Aug 28, 2023</td>
-<td class="p-md text-body-sm">Registration Fee</td>
-<td class="p-md text-body-sm">Bank Transfer</td>
-<td class="p-md text-body-sm font-bold text-on-surface">$500.00</td>
-<td class="p-md">
-<span class="px-sm py-1 bg-green-100 text-green-800 text-label-bold rounded-full border border-green-200">Paid</span>
-</td>
-</tr>
-<tr class="border-b border-outline-variant hover:bg-[#EFF6FF] transition-colors">
-<td class="p-md text-body-sm font-medium">TXN-87401</td>
-<td class="p-md text-body-sm">Aug 15, 2023</td>
-<td class="p-md text-body-sm">Hostel Deposit</td>
-<td class="p-md text-body-sm">Digital Wallet</td>
-<td class="p-md text-body-sm font-bold text-on-surface">$1,000.00</td>
-<td class="p-md">
-<span class="px-sm py-1 bg-green-100 text-green-800 text-label-bold rounded-full border border-green-200">Paid</span>
-</td>
-</tr>
-<tr class="hover:bg-[#EFF6FF] transition-colors">
-<td class="p-md text-body-sm font-medium">TXN-92144</td>
-<td class="p-md text-body-sm">Oct 05, 2023</td>
-<td class="p-md text-body-sm">Late Fine - Library</td>
-<td class="p-md text-body-sm">N/A</td>
-<td class="p-md text-body-sm font-bold text-on-surface">$25.00</td>
-<td class="p-md">
-<span class="px-sm py-1 bg-red-100 text-red-800 text-label-bold rounded-full border border-red-200">Pending</span>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
+
+<main class="ml-64 min-h-screen">
+  <header class="flex justify-between items-center w-full px-6 h-16 sticky top-0 bg-surface-bright border-b border-outline-variant z-40">
+    <h2 class="text-xl font-bold text-primary">My Fee Status</h2>
+  </header>
+
+  <div class="p-6 max-w-[1280px]">
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <div class="bg-[#EFF6FF] border border-[#D1E4FF] p-6 rounded-xl">
+        <p class="text-xs font-semibold text-on-surface-variant uppercase">Total Amount</p>
+        <h3 class="text-3xl font-bold text-primary mt-1" id="total-amount">--</h3>
+      </div>
+      <div class="bg-[#EFF6FF] border border-[#D1E4FF] p-6 rounded-xl">
+        <p class="text-xs font-semibold text-on-surface-variant uppercase">Pending</p>
+        <h3 class="text-3xl font-bold text-error mt-1" id="pending-amount">--</h3>
+      </div>
+      <div class="bg-[#EFF6FF] border border-[#D1E4FF] p-6 rounded-xl">
+        <p class="text-xs font-semibold text-on-surface-variant uppercase">Paid</p>
+        <h3 class="text-3xl font-bold text-green-700 mt-1" id="paid-count">--</h3>
+      </div>
+    </div>
+
+    <!-- Fee Table -->
+    <div class="bg-white rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+      <div class="p-4 border-b border-outline-variant bg-surface-container-low">
+        <h4 class="font-bold text-primary">My Fee Records</h4>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Fee Type</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Amount</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Due Date</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Semester</th>
+              <th class="px-6 py-3 text-xs font-semibold uppercase">Status</th>
+            </tr>
+          </thead>
+          <tbody id="fees-table">
+            <tr><td colspan="5" class="px-6 py-8 text-center text-on-surface-variant">Loading fees...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </main>
+
 <script>
-        // Simple hover micro-interaction logic
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mousedown', () => {
-                el.classList.add('scale-95');
-            });
-            el.addEventListener('mouseup', () => {
-                el.classList.remove('scale-95');
-            });
-            el.addEventListener('mouseleave', () => {
-                el.classList.remove('scale-95');
-            });
-        });
-    </script>
-</body></html>
+  const API_URL = 'https://student-erp-backend-v7f3.onrender.com';
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  if (!token) window.location.href = '../login_edumanage_erp/code.html';
+
+  document.getElementById('student-name').textContent = user.full_name || 'Student';
+
+  const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
+
+  async function loadFees() {
+    try {
+      // Get student record
+      const studentsRes = await fetch(`${API_URL}/api/students`, { headers });
+      const students = await studentsRes.json();
+      const myStudent = students.find(s => s.user_id === user.id);
+
+      if (!myStudent) {
+        document.getElementById('fees-table').innerHTML =
+          '<tr><td colspan="5" class="px-6 py-8 text-center text-on-surface-variant">No student record found</td></tr>';
+        return;
+      }
+
+      const res = await fetch(`${API_URL}/api/fees/student/${myStudent.id}`, { headers });
+      const fees = await res.json();
+
+      const totalAmount = fees.reduce((sum, f) => sum + parseFloat(f.amount), 0);
+      const pendingFees = fees.filter(f => f.status !== 'paid');
+      const pendingAmount = pendingFees.reduce((sum, f) => sum + parseFloat(f.amount), 0);
+      const paidCount = fees.filter(f => f.status === 'paid').length;
+
+      document.getElementById('total-amount').textContent = `₹${totalAmount}`;
+      document.getElementById('pending-amount').textContent = `₹${pendingAmount}`;
+      document.getElementById('paid-count').textContent = `${paidCount} paid`;
+
+      const tbody = document.getElementById('fees-table');
+      if (!fees.length) {
+        tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-on-surface-variant">No fee records found</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = fees.map(f => `
+        <tr class="zebra-row border-b border-outline-variant/30">
+          <td class="px-6 py-3 font-bold">${f.fee_type}</td>
+          <td class="px-6 py-3 font-bold text-primary">₹${f.amount}</td>
+          <td class="px-6 py-3 text-on-surface-variant">${f.due_date}</td>
+          <td class="px-6 py-3">Sem ${f.semester}</td>
+          <td class="px-6 py-3">
+            <span class="px-2 py-1 rounded-full text-xs font-bold ${
+              f.status === 'paid' ? 'bg-green-100 text-green-800' :
+              f.status === 'partial' ? 'bg-yellow-100 text-yellow-800' :
+              'bg-red-100 text-red-800'
+            }">${f.status}</span>
+          </td>
+        </tr>
+      `).join('');
+
+    } catch (err) {
+      document.getElementById('fees-table').innerHTML =
+        '<tr><td colspan="5" class="px-6 py-8 text-center text-error">Failed to load fees</td></tr>';
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.href = '../login_edumanage_erp/code.html';
+  }
+
+  loadFees();
+</script>
+</body>
+</html>
