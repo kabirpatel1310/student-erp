@@ -1,221 +1,192 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Login | EduManage ERP</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface-bright": "#f9f9ff",
-                    "on-secondary": "#ffffff",
-                    "tertiary-fixed-dim": "#c0c7d0",
-                    "tertiary-container": "#333a41",
-                    "surface-dim": "#d3daef",
-                    "tertiary": "#1d252b",
-                    "surface-container-high": "#e1e8fd",
-                    "surface-container-highest": "#dce2f7",
-                    "on-primary": "#ffffff",
-                    "on-secondary-container": "#fefcff",
-                    "inverse-surface": "#293040",
-                    "on-tertiary-fixed": "#151c23",
-                    "on-error-container": "#93000a",
-                    "surface-container": "#e9edff",
-                    "on-primary-fixed-variant": "#2d486d",
-                    "outline-variant": "#c4c6cf",
-                    "surface-container-lowest": "#ffffff",
-                    "background": "#f9f9ff",
-                    "surface-container-low": "#f1f3ff",
-                    "inverse-primary": "#adc8f5",
-                    "error": "#ba1a1a",
-                    "on-error": "#ffffff",
-                    "error-container": "#ffdad6",
-                    "outline": "#74777f",
-                    "on-tertiary": "#ffffff",
-                    "on-secondary-fixed": "#00174b",
-                    "surface": "#f9f9ff",
-                    "inverse-on-surface": "#edf0ff",
-                    "on-tertiary-fixed-variant": "#40484f",
-                    "on-primary-fixed": "#001c3b",
-                    "on-secondary-fixed-variant": "#003ea8",
-                    "surface-tint": "#455f87",
-                    "tertiary-fixed": "#dce3ec",
-                    "on-tertiary-container": "#9ca4ac",
-                    "secondary-fixed": "#dbe1ff",
-                    "on-surface-variant": "#43474e",
-                    "secondary-container": "#316bf3",
-                    "primary-container": "#1e3a5f",
-                    "primary-fixed": "#d5e3ff",
-                    "primary": "#022448",
-                    "surface-variant": "#dce2f7",
-                    "on-surface": "#141b2b",
-                    "on-primary-container": "#8aa4cf",
-                    "secondary-fixed-dim": "#b4c5ff",
-                    "primary-fixed-dim": "#adc8f5",
-                    "secondary": "#0051d5",
-                    "on-background": "#141b2b",
-                    "gov-dark": "#111827",
-                    "gov-blue": "#2563EB",
-                    "gov-card": "#EFF6FF"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "lg": "24px",
-                    "gutter": "24px",
-                    "md": "16px",
-                    "container-max": "1280px",
-                    "base": "4px",
-                    "xs": "4px",
-                    "xl": "40px",
-                    "sm": "8px"
-            },
-            "fontFamily": {
-                    "title-sm": ["Inter"],
-                    "label-bold": ["Inter"],
-                    "body-md": ["Inter"],
-                    "display-lg": ["Inter"],
-                    "headline-md": ["Inter"],
-                    "body-sm": ["Inter"]
-            },
-            "fontSize": {
-                    "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
-                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
-            }
-          },
-        },
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-bright": "#f9f9ff",
+          "surface-container-low": "#f1f3ff",
+          "surface-container": "#e9edff",
+          "outline-variant": "#c4c6cf",
+          "outline": "#74777f",
+          "on-surface-variant": "#43474e",
+          "on-surface": "#141b2b",
+          "primary": "#022448",
+          "on-primary": "#ffffff",
+          "primary-container": "#1e3a5f",
+          "on-primary-container": "#8aa4cf",
+          "secondary": "#0051d5",
+          "error": "#ba1a1a",
+          "gov-blue": "#2563EB",
+          "gov-card": "#EFF6FF"
+        }
       }
-    </script>
+    }
+  }
+</script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9ff;
-        }
-        .login-card {
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            border: 1px solid #D1E4FF;
-        }
-        .input-focus-ring:focus {
-            outline: none;
-            border-color: #2563EB;
-            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
-        }
-    </style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; }
+  .login-card { box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #D1E4FF; }
+  .input-focus-ring:focus { outline: none; border-color: #2563EB; box-shadow: 0 0 0 2px rgba(37,99,235,0.2); }
+</style>
 </head>
-<body class="flex items-center justify-center min-h-screen text-gov-dark">
-<main class="w-full max-w-md px-md">
-<!-- Login Card Container -->
-<div class="login-card bg-gov-card rounded-lg p-xl flex flex-col items-center">
-<!-- Logo Section -->
-<div class="mb-xl text-center">
-<div class="flex items-center justify-center mb-sm">
-<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-on-primary">
-<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">school</span>
-</div>
-</div>
-<h1 class="font-headline-md text-headline-md text-primary tracking-tight">EduManage ERP</h1>
-<p class="font-label-bold text-label-bold text-on-surface-variant uppercase mt-xs">Institutional Access Portal</p>
-</div>
-<!-- Form Section -->
-<form action="#" class="w-full space-y-lg" method="POST">
-<!-- Email Field -->
-<div class="space-y-sm">
-<label class="block font-label-bold text-label-bold text-on-surface-variant" for="email">Email Address</label>
-<div class="relative">
-<div class="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-outline text-lg">alternate_email</span>
-</div>
-<input class="block w-full pl-xl pr-md py-md bg-white border border-outline-variant rounded-lg font-body-md text-body-md text-gov-dark input-focus-ring transition-all" id="email" name="email" placeholder="admin@institution.edu" required="" type="email"/>
-</div>
-</div>
-<!-- Password Field -->
-<div class="space-y-sm">
-<div class="flex justify-between items-center">
-<label class="block font-label-bold text-label-bold text-on-surface-variant" for="password">Password</label>
-<a class="text-label-bold font-label-bold text-gov-blue hover:underline" href="#">Forgot Password?</a>
-</div>
-<div class="relative">
-<div class="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-outline text-lg">lock</span>
-</div>
-<input class="block w-full pl-xl pr-md py-md bg-white border border-outline-variant rounded-lg font-body-md text-body-md text-gov-dark input-focus-ring transition-all" id="password" name="password" placeholder="••••••••" required="" type="password"/>
-</div>
-</div>
-<!-- Remember Me -->
-<div class="flex items-center">
-<input class="h-4 w-4 text-gov-blue focus:ring-gov-blue border-outline-variant rounded" id="remember-me" name="remember-me" type="checkbox"/>
-<label class="ml-sm block font-body-sm text-body-sm text-on-surface-variant" for="remember-me">
-                        Remember this device
-                    </label>
-</div>
-<!-- Login Button -->
-<div>
-<button class="group relative w-full flex justify-center py-md px-lg border border-transparent font-title-sm text-title-sm rounded-lg text-white bg-gov-blue hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gov-blue transition-colors duration-200" type="submit">
-<span class="absolute left-0 inset-y-0 flex items-center pl-md">
-<span class="material-symbols-outlined text-white/50 group-hover:text-white transition-colors">login</span>
-</span>
-                        Login
-                    </button>
-</div>
-</form>
-<!-- Security Footer inside card -->
-<div class="mt-xl pt-lg border-t border-outline-variant w-full text-center">
-<div class="flex items-center justify-center space-x-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
-<span class="font-label-bold text-label-bold">Secure Multi-Factor Authentication Enabled</span>
-</div>
-</div>
-</div>
-<!-- External Footer -->
-<footer class="mt-lg text-center space-y-sm">
-<p class="font-body-sm text-body-sm text-outline">
-                © 2024 Educational Management Systems. All rights reserved.
-            </p>
-<div class="flex justify-center space-x-lg">
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary" href="#">System Status</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary" href="#">Privacy Policy</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary" href="#">Support</a>
-</div>
-</footer>
+<body class="flex items-center justify-center min-h-screen">
+
+<main class="w-full max-w-md px-4">
+  <div class="login-card bg-gov-card rounded-lg p-10 flex flex-col items-center">
+    
+    <!-- Logo -->
+    <div class="mb-8 text-center">
+      <div class="flex items-center justify-center mb-2">
+        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white">
+          <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">school</span>
+        </div>
+      </div>
+      <h1 class="text-2xl font-bold text-primary">EduManage ERP</h1>
+      <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest mt-1">Institutional Access Portal</p>
+    </div>
+
+    <!-- Error Message -->
+    <div class="w-full mb-4 hidden" id="error-box">
+      <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
+        <span class="material-symbols-outlined text-red-500">error</span>
+        <span id="error-msg">Invalid credentials</span>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="w-full space-y-6">
+      <!-- Email -->
+      <div class="space-y-2">
+        <label class="block text-xs font-semibold text-on-surface-variant uppercase" for="email">Email Address</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <span class="material-symbols-outlined text-outline">alternate_email</span>
+          </div>
+          <input class="block w-full pl-10 pr-4 py-3 bg-white border border-outline-variant rounded-lg text-base text-on-surface input-focus-ring transition-all" 
+                 id="email" placeholder="admin@institution.edu" type="email"/>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="space-y-2">
+        <div class="flex justify-between items-center">
+          <label class="block text-xs font-semibold text-on-surface-variant uppercase" for="password">Password</label>
+          <a class="text-xs font-semibold text-gov-blue hover:underline" href="#">Forgot Password?</a>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <span class="material-symbols-outlined text-outline">lock</span>
+          </div>
+          <input class="block w-full pl-10 pr-4 py-3 bg-white border border-outline-variant rounded-lg text-base text-on-surface input-focus-ring transition-all" 
+                 id="password" placeholder="••••••••" type="password"/>
+        </div>
+      </div>
+
+      <!-- Login Button -->
+      <button class="w-full flex justify-center items-center gap-2 py-3 px-6 bg-gov-blue text-white font-semibold rounded-lg hover:bg-secondary transition-colors duration-200" 
+              id="login-btn" onclick="handleLogin()">
+        <span class="material-symbols-outlined">login</span>
+        Login
+      </button>
+    </div>
+
+    <!-- Security Footer -->
+    <div class="mt-8 pt-6 border-t border-outline-variant w-full text-center">
+      <div class="flex items-center justify-center gap-2 text-on-surface-variant">
+        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+        <span class="text-xs font-semibold">Secure Authentication Enabled</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-4 text-center">
+    <p class="text-sm text-outline">© 2024 EduManage ERP. All rights reserved.</p>
+  </footer>
 </main>
-<!-- Visual Atmosphere: Subtle Grid Pattern -->
+
 <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-<div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#1E3A5F 0.5px, transparent 0.5px); background-size: 24px 24px;">
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#1E3A5F 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
 </div>
-</div>
+
 <script>
-        // Simple interactive feedback for the login button
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.innerText;
-            btn.disabled = true;
-            btn.innerHTML = '<span class="material-symbols-outlined animate-spin mr-2">sync</span> Authenticatiing...';
-            
-            // Artificial delay for visual feedback
-            setTimeout(() => {
-                // In a real scenario, the form would submit here
-                console.log("Authentication request sent...");
-            }, 1000);
-        });
-    </script>
-</body></html>
+  const API_URL = 'https://student-erp-backend-v7f3.onrender.com';
+
+  async function handleLogin() {
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const btn = document.getElementById('login-btn');
+    const errorBox = document.getElementById('error-box');
+    const errorMsg = document.getElementById('error-msg');
+
+    // Validation
+    if (!email || !password) {
+      errorMsg.textContent = 'Please enter email and password.';
+      errorBox.classList.remove('hidden');
+      return;
+    }
+
+    // Loading state
+    btn.disabled = true;
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Logging in...';
+    errorBox.classList.add('hidden');
+
+    try {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Login failed');
+      }
+
+      // Save token and user info
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+
+      // Redirect based on role
+      const role = data.user?.roles?.name;
+
+      if (role === 'admin') {
+        window.location.href = '../admin_dashboard_edumanage_erp/code.html';
+      } else if (role === 'faculty') {
+        window.location.href = '../mark_attendance_faculty_portal/code.html';
+      } else if (role === 'student') {
+        window.location.href = '../my_marks_student_portal/code.html';
+      } else {
+        window.location.href = '../admin_dashboard_edumanage_erp/code.html';
+      }
+
+    } catch (error) {
+      errorMsg.textContent = error.message || 'Login failed. Please try again.';
+      errorBox.classList.remove('hidden');
+      btn.disabled = false;
+      btn.innerHTML = '<span class="material-symbols-outlined">login</span> Login';
+    }
+  }
+
+  // Allow Enter key to submit
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleLogin();
+  });
+</script>
+</body>
+</html>
