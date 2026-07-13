@@ -140,7 +140,12 @@
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-  if (!token) window.location.href = '../login_edumanage_erp/code.html';
+  const role = user?.roles?.name;
+
+  if (!token || role !== 'faculty') {
+    alert('Access denied. Faculty only.');
+    window.location.href = '../login_edumanage_erp/code.html';
+  }
 
   document.getElementById('faculty-name').textContent = user.full_name || 'Faculty';
 
