@@ -92,12 +92,12 @@
           <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
             <span class="material-symbols-outlined text-outline">lock</span>
           </div>
-          <input class="block w-full pl-10 pr-4 py-3 bg-white border border-outline-variant rounded-lg text-base text-on-surface input-focus-ring transition-all" 
+          <input class="block w-full pl-10 pr-10 py-3 bg-white border border-outline-variant rounded-lg text-base text-on-surface input-focus-ring transition-all" 
                 id="password" placeholder="••••••••" type="password"/>
-            </div>
-            <button type="button" onclick="togglePassword()" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:#6b7280; pointer-events:all; z-index:10;">
-              <span id="eye-icon" class="material-symbols-outlined">visibility</span>
-            </button>
+          <button type="button" onclick="togglePassword()" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:#6b7280; pointer-events:all; z-index:10;">
+            <span id="eye-icon" class="material-symbols-outlined">visibility</span>
+          </button>
+        </div>
       </div>
 
       <!-- Login Button -->
@@ -127,7 +127,21 @@
 </div>
 
 <script>
-  const API_URL = 'https://student-erp-backend-v7f3.onrender.com';
+const API_URL = 'https://student-erp-backend-v7f3.onrender.com';
+
+  function togglePassword() {
+    const pwd = document.getElementById('password');
+    const icon = document.getElementById('eye-icon');
+    if (pwd.type === 'password') {
+      pwd.type = 'text';
+      icon.textContent = 'visibility_off';
+    } else {
+      pwd.type = 'password';
+      icon.textContent = 'visibility';
+    }
+  }
+
+  async function handleLogin() {
 
   async function handleLogin() {
     const email = document.getElementById('email').value.trim();
