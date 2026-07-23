@@ -5,7 +5,7 @@ import { createFacultySchema, updateFacultySchema } from '../validators/faculty.
 export const getFaculty = async (req: Request, res: Response) => {
   try {
     const { department_id } = req.query;
-    let query = supabase.from('faculty').select('*, users(full_name, email, phone), departments(name)');
+    let query = supabase.from('faculty').select('*, user:users(full_name, email, phone), departments(name)')
     if (department_id) query = query.eq('department_id', department_id);
     const { data, error } = await query;
     if (error) return res.status(400).json({ error: error.message });
@@ -20,7 +20,7 @@ export const getFacultyById = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { data, error } = await supabase
       .from('faculty')
-      .select('*, users(full_name, email, phone), departments(name)')
+      .select('*, user:users(full_name, email, phone), departments(name)')
       .eq('id', id)
       .single();
     if (error) return res.status(404).json({ error: 'Faculty not found' });
