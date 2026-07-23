@@ -31,7 +31,7 @@ app.use('/api/notifications', notificationRoutes);
 
 // Health check
 app.get('/', (req, res) => {
-  res.json({ message: 'EduManage ERP API is running!' });
+  res.json({ message: 'EduManage ERP API is running!', version: '1.1' });
 });
 
 app.listen(PORT, () => {
