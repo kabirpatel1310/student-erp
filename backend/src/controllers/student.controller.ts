@@ -8,7 +8,7 @@ export const getStudents = async (req: Request, res: Response) => {
 
     let query = supabase
       .from('students')
-      .select('*, users(full_name, email, phone), departments(name)');
+      .select('*, user:users(full_name, email, phone), departments(name)')
 
     if (department_id) query = query.eq('department_id', department_id);
     if (semester) query = query.eq('semester', semester);
@@ -28,7 +28,7 @@ export const getStudentById = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { data, error } = await supabase
       .from('students')
-      .select('*, users(full_name, email, phone), departments(name)')
+      .select('*, user:users(full_name, email, phone), departments(name)')
       .eq('id', id)
       .single();
 
